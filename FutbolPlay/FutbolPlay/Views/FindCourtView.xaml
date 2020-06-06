@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FutbolPlay.Views.FindCourtView"
+             xmlns:i18n="clr-namespace:FutbolPlay.Services;assembly=FutbolPlay"
+             Style="{StaticResource pageStyle}">
+  <ScrollView>
+    <StackLayout Style="{StaticResource formStyle}" Spacing="5">
+      <Label Text="{Binding Reservation.Place.Name}" FontSize="30" TextColor="#131F32" />
+
+      <Label Text="{i18n:Translate find_text1}" />
+      <DatePicker x:Name="dpDate" Format="ddd, dd MMM" Date="{Binding Date}" />
+
+      <Label Text="{i18n:Translate find_text2}" />
+      <TimePicker x:Name="tpTime" Time="{Binding Hour}" />
+
+      <Button x:Name="btnCancelReservations" Text="{i18n:Translate search}" Command="{Binding FindCommand}" />
+
+      <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+    </StackLayout>
+  </ScrollView>
+</ContentPage>

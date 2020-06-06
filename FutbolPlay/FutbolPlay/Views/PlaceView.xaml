@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FutbolPlay.Views.PlaceView"
+             xmlns:local="clr-namespace:FutbolPlay.Services;assembly=FutbolPlay"
+             xmlns:local2="clr-namespace:FutbolPlay.Converters;assembly=FutbolPlay"
+             xmlns:i18n="clr-namespace:FutbolPlay.Services;assembly=FutbolPlay"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             Style="{StaticResource pageStyle}">
+  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness " Android="0,50,0,0" iOS="0,0,0,0" WinPhone="0,50,0,0" />
+  </ContentPage.Padding>
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <local2:PlaceDescriptionValueConverter x:Key="placeDescriptionValueConverter"></local2:PlaceDescriptionValueConverter>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <ContentPage.Content>
+    <StackLayout>
+      <ActivityIndicator IsRunning="{Binding IsBusy}"
+                           IsVisible="{Binding IsBusy}" />
+
+      <ScrollView VerticalOptions="FillAndExpand">
+        <StackLayout VerticalOptions="FillAndExpand">
+
+          <StackLayout Orientation="Horizontal" Padding="10,10,10,10">
+            <Image Source="{Binding Place.Image}" HeightRequest="80" WidthRequest="80" Aspect="AspectFit" />
+
+            <StackLayout Style="{StaticResource formStyle}" Padding="5,0,0,0" HorizontalOptions="FillAndExpand" Spacing="5">
+              <Label Text="{Binding Place.Name}" FontSize="25" />
+
+              <StackLayout Spacing="5" Orientation="Horizontal">
+                <Image VerticalOptions="Center" Aspect="AspectFit" HeightRequest="20" Source="{local:ImageResource FutbolPlay.Resources.Drawable.route.png}" />
+                <Label Text="{Binding Place.Address}" />
+              </StackLayout>
+
+              <StackLayout Spacing="5" Orientation="Horizontal">
+                <Image VerticalOptions="Center" Aspect="AspectFit" HeightRequest="20" Source="{local:ImageResource FutbolPlay.Resources.Drawable.phone.png}" />
+                <Label Text="{Binding Place.Phone}" />
+              </StackLayout>
+
+              <StackLayout Spacing="5" Orientation="Horizontal">
+                <StackLayout.GestureRecognizers>
+                  <TapGestureRecognizer Command="{Binding ShowTimesCommand}" />
+                </StackLayout.GestureRecognizers>
+
+                <Image VerticalOptions="Center" Aspect="AspectFit" HeightRequest="20" Source="{local:ImageResource FutbolPlay.Resources.Drawable.clock.png}" />
+                <Label Text="{Binding Time}" VerticalOptions="Center" />
+                <Image VerticalOptions="Center" Aspect="AspectFit" HeightRequest="15" Source="{local:ImageResource FutbolPlay.Resources.Drawable.expand.png}" />
+              </StackLayout>
+
+              <Button x:Name="btnDoReservation" Text="{i18n:Translate reservation}" Command="{Binding FindCommand}" IsVisible="False" />
+
+            </StackLayout>
+          </StackLayout>
+
+          <StackLayout BackgroundColor="#14AA93" Orientation="Horizontal" HorizontalOptions="Fill" Padding="0,10,0,10">
+            <StackLayout Spacing="10" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+              <StackLayout x:Name="lblMap" Spacing="5" Orientation="Horizontal" HorizontalOptions="Fill">
+                <Image VerticalOptions="Center" Aspect="AspectFit" HorizontalOptions="CenterAndExpand" HeightRequest="20" Source="{local:ImageResource FutbolPlay.Resources.Drawable.map.png}" />
+                <Label Text="Ubicación" TextColor="White" HorizontalOptions="CenterAndExpand" />
+              </StackLayout>
+
+              <BoxView WidthRequest="1" HeightRequest="2" Color="White" />
+
+              <StackLayout x:Name="lblDescription" Spacing="5" Orientation="Horizontal" HorizontalOptions="Fill">
+                <Image VerticalOptions="Center" Aspect="AspectFit" HorizontalOptions="CenterAndExpand" HeightRequest="20" Source="{local:ImageResource FutbolPlay.Resources.Drawable.services.png}" />
+                <Label Text="{i18n:Translate additional_services}" TextColor="White" HorizontalOptions="CenterAndExpand" />
+              </StackLayout>
+            </StackLayout>
+          </StackLayout>
+
+          <StackLayout x:Name="slMaps" Padding="0,0,0,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <maps:Map VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="map" IsShowingUser="true" MapType="Street" />
+          </StackLayout>
+
+          <StackLayout x:Name="slDescription" Padding="10,0,10,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Opacity="0" IsVisible="False">
+            <Label Text="{Binding Place.Description, Converter={StaticResource placeDescriptionValueConverter}}" FontSize="15" />
+          </StackLayout>
+
+        </StackLayout>
+      </ScrollView>
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

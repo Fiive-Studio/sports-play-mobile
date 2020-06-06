@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FutbolPlay.Views.StartView"
+             xmlns:i18n="clr-namespace:FutbolPlay.Services;assembly=FutbolPlay"
+             xmlns:local="clr-namespace:FutbolPlay.Services;assembly=FutbolPlay"
+             Style="{StaticResource pageStyle}">
+  <ScrollView>
+    <StackLayout Spacing="10"
+                 VerticalOptions="Center"
+                 Padding="20,0,20,0">
+
+      <Image Aspect="AspectFit"
+             HeightRequest="150"
+             Source="{local:ImageResource FutbolPlay.Resources.Drawable.arnoldo.png}" />
+
+      <Button x:Name="btnRegisterMail"
+              Text="{i18n:Translate login_mail}"
+              Command="{Binding RegisterMailCommand}"/>
+
+      <Button x:Name="btnFacebookLogin"
+              BackgroundColor="#4267B2"
+              Text="{i18n:Translate facebook_login}"
+              Command="{Binding FacebookRegisterCommand}"/>
+
+      <Button x:Name="btnCourts"
+              Text="{i18n:Translate courts_directory}"
+              Command="{Binding PlacesCommand}"/>
+
+      <Label x:Name="lblLogin"
+             Text="{i18n:Translate account_login}"
+             XAlign="Center">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding LoginCommand}" />
+        </Label.GestureRecognizers>
+      </Label>
+
+    </StackLayout>
+  </ScrollView>
+</ContentPage>

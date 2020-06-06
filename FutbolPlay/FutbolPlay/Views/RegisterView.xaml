@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FutbolPlay.Views.RegisterView"
+             xmlns:i18n="clr-namespace:FutbolPlay.Services;assembly=FutbolPlay"
+             xmlns:common="clr-namespace:FutbolPlay.Common.Behaviors;assembly=FutbolPlay.Common"
+             Style="{StaticResource pageStyle}">
+
+  <ScrollView>
+    <StackLayout Style="{StaticResource formStyle}">
+
+      <Entry x:Name="entName"
+             Placeholder="{i18n:Translate name}"
+             Text="{Binding Name}">
+        <Entry.Behaviors>
+          <common:MaxLengthValidatorBehavior MaxLength="50" />
+        </Entry.Behaviors>
+      </Entry>
+
+      <Entry x:Name="entMail"
+             Keyboard="Email"
+             Placeholder="{i18n:Translate mail}"
+             Text="{Binding Mail}">
+        <Entry.Behaviors>
+          <common:MaxLengthValidatorBehavior MaxLength="50" />
+          <common:EmailValidatorBehavior />
+        </Entry.Behaviors>
+      </Entry>
+
+      <Entry x:Name="entPhone"
+             Keyboard="Telephone"
+             Placeholder="{i18n:Translate phone}"
+             Text="{Binding Phone}">
+        <Entry.Behaviors>
+          <common:MaxLengthValidatorBehavior MaxLength="50" />
+          <common:PhoneValidatorBehavior />
+        </Entry.Behaviors>
+      </Entry>
+
+      <Entry x:Name="entPassword"
+             Placeholder="{i18n:Translate password_register}"
+             IsPassword="true"
+             Text="{Binding Password}">
+        <Entry.Behaviors>
+          <common:MaxLengthValidatorBehavior MaxLength="50" />
+        </Entry.Behaviors>
+      </Entry>
+
+      <Entry x:Name="entRePassword"
+             Placeholder="{i18n:Translate re_password}"
+             IsPassword="true"
+             Text="{Binding RePassword}">
+        <Entry.Behaviors>
+          <common:MaxLengthValidatorBehavior MaxLength="50" />
+        </Entry.Behaviors>
+      </Entry>
+
+      <Button x:Name="btnCreate"
+              Text="{i18n:Translate register}"
+              Command="{Binding RegisterCommand}"
+              IsEnabled="{Binding RegisterButtonStatus}"/>
+
+      <ActivityIndicator IsRunning="{Binding IsBusy}" 
+                         IsVisible="{Binding IsBusy}" />
+      
+    </StackLayout>
+  </ScrollView>
+
+</ContentPage>

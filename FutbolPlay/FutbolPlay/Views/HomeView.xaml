@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FutbolPlay.Views.HomeView"
+             xmlns:i18n="clr-namespace:FutbolPlay.Services;assembly=FutbolPlay"
+             Style="{StaticResource pageStyle}">
+
+  <ScrollView>
+    <StackLayout Spacing="10"
+                 VerticalOptions="Center"
+                 Padding="20,0,20,0">
+
+      <Button x:Name="btnSearch"
+              Command="{Binding FindCommand}"
+              Text="{i18n:Translate reservation}" />
+
+      <Button x:Name="btnCourts"
+              Command="{Binding CourtsCommand}"
+              Text="{i18n:Translate courts}" />
+
+      <Button x:Name="btnMap"
+              Command="{Binding MapCommand}"
+              Text="{i18n:Translate map}" IsVisible="False" />
+
+      <Button x:Name="btnReservation"
+              Command="{Binding MyReservationCommand}"
+              Text="{i18n:Translate my_reservation}" />
+
+      <Button x:Name="btnProfile"
+              Command="{Binding ProfileCommand}"
+              Text="{i18n:Translate my_profile}" />
+
+      <Button x:Name="btnLogoff"
+              Text="{i18n:Translate log_off}"
+              Command="{Binding LogoffCommand}"/>
+
+    </StackLayout>
+  </ScrollView>
+
+</ContentPage>

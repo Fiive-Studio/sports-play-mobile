@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FutbolPlay.Views.ReservationSummaryView"
+             xmlns:i18n="clr-namespace:FutbolPlay.Services;assembly=FutbolPlay"
+             Style="{StaticResource pageStyle}">
+  <ScrollView>
+    <StackLayout Style="{StaticResource formStyle}" Spacing="5">
+      <Label Text="{Binding Reservation.Place.Name}" FontSize="30" />
+
+      <Label Text="{i18n:Translate reservation_text3}" />
+      <Label Text="{Binding Reservation.Place.Address}" FontSize="20" />
+
+      <Label Text="{i18n:Translate reservation_text2}" />
+      <Label Text="{Binding Reservation.Date, StringFormat='{0:ddd, dd MMMM hh:mm tt}'}" FontSize="20" />
+
+      <Label Text="{i18n:Translate reservation_text5}" />
+      <Label Text="{Binding Reservation.Pitch.Description}" FontSize="20" />
+      
+      <Label Text="{i18n:Translate reservation_text4}" />
+      <Label Text="{Binding Price}" FontSize="20" />
+
+      <Button x:Name="btnCancelReservations"
+              Command="{Binding CancelReservationCommand}" IsEnabled="{Binding CancelReservationButtonStatus}"
+              Text="{i18n:Translate cancel_reservation}" />
+
+      <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+    </StackLayout>
+  </ScrollView>
+</ContentPage>

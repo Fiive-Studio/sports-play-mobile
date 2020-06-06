@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FutbolPlay.Views.PlacesListView"
+             xmlns:i18n="clr-namespace:FutbolPlay.Services;assembly=FutbolPlay"
+             xmlns:local="clr-namespace:FutbolPlay.Services;assembly=FutbolPlay"
+             Style="{StaticResource pageStyle}">
+  
+  <StackLayout Style="{StaticResource formStyle}" VerticalOptions="FillAndExpand" Spacing="1" Padding="10,10,10,10">
+    <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+    <Button x:Name="btnRetry" Text="{i18n:Translate retry}" Command="{Binding RetryCommand}" IsVisible="{Binding RetryButtonVisible}"/>
+    <ListView x:Name="lsPlaces" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasUnevenRows="True">
+      <ListView.SeparatorVisibility>
+        <OnPlatform x:TypeArguments="SeparatorVisibility " Android="Default" iOS="None" WinPhone="Default" />
+      </ListView.SeparatorVisibility>
+    </ListView>
+  </StackLayout>
+  
+</ContentPage>

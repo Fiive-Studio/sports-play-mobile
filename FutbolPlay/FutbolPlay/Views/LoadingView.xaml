@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FutbolPlay.Views.LoadingView"
+             xmlns:i18n="clr-namespace:FutbolPlay.Services;assembly=FutbolPlay"
+             xmlns:local="clr-namespace:FutbolPlay.Services;assembly=FutbolPlay"
+             Style="{StaticResource pageStyle}">
+  <ScrollView>
+    <StackLayout Spacing="10"
+                 VerticalOptions="Center"
+                 Padding="20,0,20,0">
+
+      <Image Aspect="AspectFit"
+             HeightRequest="150"
+             Source="{local:ImageResource FutbolPlay.Resources.Drawable.arnoldo.png}" />
+      
+    <ActivityIndicator IsRunning="True" IsEnabled="True" />
+
+      <Label
+             Text="{i18n:Translate loading_app}"
+             XAlign="Center" />
+
+    </StackLayout>
+  </ScrollView>
+</ContentPage>

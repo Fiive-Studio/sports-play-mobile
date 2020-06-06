@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FutbolPlay.Views.ReservationCreateView"
+             xmlns:i18n="clr-namespace:FutbolPlay.Services;assembly=FutbolPlay"
+             Style="{StaticResource pageStyle}">
+  <ScrollView>
+    <StackLayout Style="{StaticResource formStyle}" Spacing="5">
+      <Label Text="{Binding UserName}" FontSize="30" />
+      
+      <Label Text="{i18n:Translate reservation_text1}" />
+      <Label Text="{Binding Reservation.Place.Name}" FontSize="20" />
+      
+      <Label Text="{i18n:Translate reservation_text2}" VerticalOptions="End" />
+      <Label Text="{Binding Date}" FontSize="20" />
+
+      <Label Text="{i18n:Translate reservation_text3}" VerticalOptions="End" />
+      <Label Text="{Binding Reservation.Place.Address}" FontSize="20" />
+
+      <Label Text="{i18n:Translate reservation_text5}" />
+      <Label Text="{Binding Reservation.Pitch.Description}" FontSize="20" />
+
+      <StackLayout Orientation="Horizontal">
+        <Label Text="{i18n:Translate reservation_text4}" VerticalOptions="End" />
+        <Label Text="{Binding Value}" FontSize="20" />
+      </StackLayout>
+      
+      <Button x:Name="btnReservation"
+              Command="{Binding DoReservationCommand}" IsEnabled="{Binding ReservationButtonStatus}"
+              Text="{i18n:Translate do_reservation}" />
+
+      <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+    </StackLayout>
+  </ScrollView>
+</ContentPage>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FutbolPlay.Views.BetaView"
+             xmlns:i18n="clr-namespace:FutbolPlay.Services;assembly=FutbolPlay"
+             xmlns:local="clr-namespace:FutbolPlay.Services;assembly=FutbolPlay"
+             Style="{StaticResource pageStyle}">
+  <ScrollView>
+    <StackLayout VerticalOptions="CenterAndExpand">
+      <Label HorizontalOptions="Center" Text="{i18n:Translate beta_end}" />
+      <Image Aspect="AspectFit" HeightRequest="300" Source="{local:ImageResource FutbolPlay.Resources.Drawable.arnoldo.png}" />
+    </StackLayout>
+  </ScrollView>
+</ContentPage>
