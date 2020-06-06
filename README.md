@@ -20,14 +20,18 @@ Para poder que el proyecto se ejecute correctamente es necesario que se realicen
 
  - Buscar el archivo RestService.cs que está en la ruta /FutbolPlay/FutbolPlay.WebApi/Services y modificar las variables
 
-> _uriAuthBase: URL donde está el API de autenticación
-> _uriBase: URL donde está el API de proceso
-> _clientIdPlay: Client Id que se defina en el API para Sports Play Mobile
-> _clientIdPlayAdmin: Client Id que se defina en el API para Sports Play Coach Mobile
+|Variable|Descripción|
+|--|--|
+|_uriAuthBase|URL donde está el API de autenticación|
+|_uriBase|URL donde está el API de proceso|
+|_clientIdPlay|Client Id que se defina en el API para Sports Play Mobile|
+|_clientIdPlayAdmin|Client Id que se defina en el API para Sports Play Coach Mobile|
 
  - Si se requiere crear integración para la autenticación con Facebook se debe crear una aplicación en dicha plataforma y una vez se tenga creada, se debe buscar el archivo FacebookModel.cs que está en la ruta /FutbolPlay/FutbolPlay.WebApi/Model y modificar la variable
 
-> ClientId: Client Id asignado en la aplicación de Facebook
+|Variable|Descripción|
+|--|--|
+|ClientId|Client Id asignado en la aplicación de Facebook|
 
 ## Construido con 🛠️
 
